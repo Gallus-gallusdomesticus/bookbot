@@ -32,22 +32,25 @@ def num_each_simple(text):
     return(word_dict)
 
 
-#FUNCTION TO SORT THE DICTIONARY BASED ON HIGHEST CHAR COUNT
+#FUNCTION TO MAKE LIST OF DICTIONARY BASED ON HIGHEST CHAR COUNT
 #making the key for the sort function (sorting based on what)
-
 def sort_on(dict):
-    return dict["num"]
+    return dict["count"]
 
+#straight from text function
 def alpha_list(text):
     list=[]
     for word in num_each_simple(text):
         if word.isalpha()==True:
-            list.append({f"alpha":word, f"num":num_each_simple(text)[word]})
+            list.append({"char":word, "count":num_each_simple(text)[word]})
     list.sort(reverse=True, key=sort_on)
     return list
 
-
-
-
-
-
+#from dictionary function
+def alpha_list_dict(word_dict):
+    list=[]
+    for char,count in word_dict.items():
+        if char.isalpha()==True:
+            list.append({"char":char,"count":count})
+    list.sort(reverse=True,key=sort_on)
+    return list
